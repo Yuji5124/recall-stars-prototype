@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5人小隊で未知の星域を生き延びる3D縦スクロールシューティング">
+  <title>RECALL STARS — prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-root"></div>
+
+  <div class="scanlines" aria-hidden="true"></div>
+  <div id="flash" aria-hidden="true"></div>
+
+  <header id="top-hud" class="hud hidden">
+    <div class="brand-block">
+      <div class="eyebrow">RECONSTRUCTION PROTOCOL // <span id="seed-label">000000</span></div>
+      <h1>RECALL <i>STARS</i></h1>
+    </div>
+    <div class="mission-block">
+      <span class="hud-label">ACTIVE SECTOR</span>
+      <strong id="sector-name">未生成宙域</strong>
+      <span id="mission-name">同期を待機中</span>
+    </div>
+    <div class="status-block">
+      <span class="status-dot"></span>
+      <span id="coop-status">SOLO LINK</span>
+      <b id="alive-count">05 / 05</b>
+    </div>
+  </header>
+
+  <aside id="squad-hud" class="hud panel hidden">
+    <div class="panel-heading"><span>SQUAD VITALS</span><small>UNIT 05</small></div>
+    <div id="member-list"></div>
+  </aside>
+
+  <aside id="intel-hud" class="hud panel hidden">
+    <div class="intel-row"><span>DIRECTIVE</span><b id="directive-text">—</b></div>
+    <div class="intel-row warning-row"><span>ANOMALY</span><b id="anomaly-text">—</b></div>
+    <div class="divider"></div>
+    <div class="panel-heading"><span>MISSION TRACE</span><small>LIVE</small></div>
+    <div id="mission-log" aria-live="polite"></div>
+  </aside>
+
+  <div id="boss-hud" class="hud hidden">
+    <div class="boss-meta"><span>HOSTILE ARCHIVE // CRITICAL</span><b id="boss-name">UNKNOWN</b></div>
+    <div class="boss-bar"><i id="boss-bar-fill"></i></div>
+  </div>
+
+  <div id="warning-banner" class="hidden">
+    <span>CAUTION</span>
+    <strong>巨大反応を検出</strong>
+    <small id="warning-name">UNREGISTERED ENTITY</small>
+  </div>
+
+  <div id="controls" class="hud panel hidden">
+    <div><b>1P</b><span>WASD / ARROWS</span><span>SPACE : FIRE</span><span>SHIFT : DASH</span></div>
+    <div><b>2P</b><span>IJKL</span><span>ENTER : FIRE</span><span>R-SHIFT : DASH</span></div>
+    <div><b>SYS</b><span>P : 2P LINK</span><span>M : NEW MISSION</span><span>B : REBUILD SPACE</span><span>R : RESTART</span></div>
+  </div>
+
+  <main id="title-screen" class="overlay active">
+    <section class="title-copy">
+      <div class="overline">UNKNOWN TRANSFER RECORD / PROTOTYPE</div>
+      <h2>RECALL<br><em>STARS</em></h2>
+      <p class="tagline">帰るのは、記憶か。<br>それとも、あなたか。</p>
+      <button id="start-button" class="primary-button"><span>MISSION START</span><small>転送を開始する</small></button>
+      <p class="start-note">HEADPHONES RECOMMENDED　•　PC BROWSER ONLY</p>
+    </section>
+    <section class="briefing-card">
+      <div class="card-index">MISSION / <span id="title-seed">000000</span></div>
+      <span class="card-label">GENERATED SECTOR</span>
+      <h3 id="title-sector">星域を生成中</h3>
+      <p id="title-type">解析不能</p>
+      <div class="brief-grid">
+        <div><span>DIRECTIVE</span><b id="title-mission">—</b></div>
+        <div><span>ANOMALY</span><b id="title-anomaly">—</b></div>
+        <div><span>ORIGIN</span><b id="title-enemy">—</b></div>
+        <div><span>SPACE MODEL</span><b id="title-background">—</b></div>
+      </div>
+      <blockquote id="opening-dialogue">「転送先を計算しています」</blockquote>
+      <div class="roster-preview" id="roster-preview"></div>
+    </section>
+  </main>
+
+  <main id="result-screen" class="overlay">
+    <section class="result-card">
+      <div class="overline" id="result-code">TRANSFER COMPLETE</div>
+      <h2 id="result-title">帰還記録</h2>
+      <p id="result-message">記録を再構成しています。</p>
+      <div class="result-grid">
+        <div><span>SECTOR</span><b id="result-sector">—</b></div>
+        <div><span>DIRECTIVE</span><b id="result-mission">—</b></div>
+        <div><span>SURVIVORS</span><b id="result-survivors">—</b></div>
+        <div><span>LOST</span><b id="result-lost">—</b></div>
+        <div><span>ELIMINATED</span><b id="result-kills">0</b></div>
+        <div><span>ELAPSED</span><b id="result-time">00:00</b></div>
+        <div><span>SPACE MODEL</span><b id="result-background">—</b></div>
+      </div>
+      <button id="next-button" class="primary-button"><span>NEXT MISSION</span><small>M キーでも次へ</small></button>
+    </section>
+  </main>
+
+  <div id="story-toast" class="hidden"><span>INTERCEPTED MEMORY</span><p id="story-text"></p></div>
+  <div id="crosshair" class="hidden"><i></i></div>
+  <div id="fps-note">THREE-DIMENSIONAL SECTOR SYNTHESIS</div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
